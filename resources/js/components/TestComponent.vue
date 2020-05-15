@@ -8,6 +8,9 @@
 </template>
 
 <script>
+  import Api from '../utilities/Api'
+  import { fizzBuzzNumbers } from "../utilities/fizzbuzz";
+
   export default {
     name: "TestComponent.vue",
     data () {
@@ -16,22 +19,11 @@
       }
     },
     methods: {
-      regenerate() {
-        axios
-          .get('/api/numbers/fizzbuzz')
-          .then(({data: numbers}) => this.numbers = numbers)
+      async regenerate() {
+        this.numbers = await Api.fizzbuzzNumbers();
       },
       withFuzzBuzz(numbers) {
-        return numbers.map(x => {
-          let prefix = ''
-          if (x % 3 === 0) {
-            prefix += 'Fizz'
-          }
-          if (x % 5 === 0) {
-            prefix += 'Buzz'
-          }
-          return prefix ? prefix : x
-        })
+        return fizzBuzzNumbers(numbers)
       }
     },
     created() {
