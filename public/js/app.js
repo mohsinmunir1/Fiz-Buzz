@@ -1925,7 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "TestComponent.vue",
   data: function data() {
     return {
-      numbers: [1, 2]
+      numbers: []
     };
   },
   methods: {
@@ -1934,7 +1934,22 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/numbers').then(function (_ref) {
         var numbers = _ref.data;
-        return _this.numbers = numbers;
+        return _this.numbers = _this.withFuzzBuzz(numbers);
+      });
+    },
+    withFuzzBuzz: function withFuzzBuzz(numbers) {
+      return numbers.map(function (x) {
+        var prefix = '';
+
+        if (x % 3 === 0) {
+          prefix += 'Fizz';
+        }
+
+        if (x % 5 === 0) {
+          prefix += 'Buzz';
+        }
+
+        return prefix ? prefix : x;
       });
     }
   },

@@ -16,14 +16,26 @@
     name: "TestComponent.vue",
     data () {
       return {
-        numbers: [1,2]
+        numbers: []
       }
     },
     methods: {
       regenerate() {
         axios
           .get('/api/numbers')
-          .then(({data: numbers}) => this.numbers = numbers)
+          .then(({data: numbers}) => this.numbers = this.withFuzzBuzz(numbers))
+      },
+      withFuzzBuzz(numbers) {
+        return numbers.map(x => {
+          let prefix = ''
+          if (x % 3 === 0) {
+            prefix += 'Fizz'
+          }
+          if (x % 5 === 0) {
+            prefix += 'Buzz'
+          }
+          return prefix ? prefix : x
+        })
       }
     },
     created() {
