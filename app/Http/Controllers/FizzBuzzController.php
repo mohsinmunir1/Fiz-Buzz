@@ -2,20 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FizzBuzzNumbersService;
+
 class FizzBuzzController
 {
-    public function index()
+    public function index(FizzBuzzNumbersService $service)
     {
-        return array_map(function ($num) {
-            $prefix = '';
-            if ($num % 3 === 0) {
-                $prefix .= 'Fizz';
-            }
-            if ($num % 5 === 0) {
-                $prefix .= 'Buzz';
-            }
-
-            return $prefix ?: $num;
-        }, range(1, 100));
+        return $service->getNumbers();
     }
 }
