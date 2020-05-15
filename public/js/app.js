@@ -1917,10 +1917,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TestComponent.vue",
   data: function data() {
@@ -1932,9 +1928,9 @@ __webpack_require__.r(__webpack_exports__);
     regenerate: function regenerate() {
       var _this = this;
 
-      axios.get('/api/numbers').then(function (_ref) {
+      axios.get('/api/numbers/fizzbuzz').then(function (_ref) {
         var numbers = _ref.data;
-        return _this.numbers = _this.withFuzzBuzz(numbers);
+        return _this.numbers = numbers;
       });
     },
     withFuzzBuzz: function withFuzzBuzz(numbers) {
@@ -19572,40 +19568,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "md:flex container border p-4 text-center" },
-    [
-      _c("div", { staticClass: "mt-4 md:mt-0 md:ml-6 text-center" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
-            on: {
-              click: function($event) {
-                return _vm.regenerate()
-              }
-            }
-          },
-          [_vm._v("\n            Regenerate\n        ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "mt-4 md:mt-0 md:ml-6 text-center" },
-        [
-          _c("b", [_vm._v("Random numbers:")]),
-          _vm._v(" "),
-          _vm._l(_vm.numbers, function(number) {
-            return _c("span", [_vm._v(_vm._s(number) + " ")])
-          })
-        ],
-        2
-      )
-    ]
-  )
+  return _c("div", { staticClass: "md:flex border p-4 text-center" }, [
+    _c(
+      "div",
+      { staticClass: "mt-4 md:mt-0 md:ml-6 text-center" },
+      [
+        _c("h1", { staticClass: "font-black" }, [_vm._v("FizzBuzz numbers:")]),
+        _vm._v(" "),
+        _vm._l(_vm.numbers, function(number) {
+          return _c("span", [_vm._v(_vm._s(number) + " ")])
+        })
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
