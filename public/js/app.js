@@ -1916,14 +1916,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TestComponent.vue",
-  created: function created() {
-    var _this = this;
+  data: function data() {
+    return {
+      numbers: [1, 2]
+    };
+  },
+  methods: {
+    regenerate: function regenerate() {
+      var _this = this;
 
-    axios.get('/api/random').then(function (response) {
-      return _this.info = response;
-    });
+      axios.get('/api/numbers').then(function (_ref) {
+        var numbers = _ref.data;
+        return _this.numbers = numbers;
+      });
+    }
+  },
+  created: function created() {
+    this.regenerate();
   }
 });
 
@@ -19541,22 +19557,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "md:flex container border p-4 text-center" },
+    [
+      _c("div", { staticClass: "mt-4 md:mt-0 md:ml-6 text-center" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
+            on: {
+              click: function($event) {
+                return _vm.regenerate()
+              }
+            }
+          },
+          [_vm._v("\n            Regenerate\n        ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mt-4 md:mt-0 md:ml-6 text-center" },
+        [
+          _c("b", [_vm._v("Random numbers:")]),
+          _vm._v(" "),
+          _vm._l(_vm.numbers, function(number) {
+            return _c("span", [_vm._v(_vm._s(number) + " ")])
+          })
+        ],
+        2
+      )
+    ]
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "md:flex container border p-4" }, [
-      _c("div", { staticClass: "mt-4 md:mt-0 md:ml-6" }, [
-        _c("div", { staticClass: "uppercase tracking-wide text-sm" }, [
-          _vm._v("Tailwind")
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
