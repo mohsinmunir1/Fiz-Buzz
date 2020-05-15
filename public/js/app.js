@@ -1912,6 +1912,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TestComponent.vue",
   created: function created() {
@@ -19537,9 +19541,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("dello")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "md:flex container border p-4" }, [
+      _c("div", { staticClass: "mt-4 md:mt-0 md:ml-6" }, [
+        _c("div", { staticClass: "uppercase tracking-wide text-sm" }, [
+          _vm._v("Tailwind")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
